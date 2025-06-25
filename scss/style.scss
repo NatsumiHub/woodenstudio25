@@ -1,0 +1,411 @@
+@use 'variables' as *;
+@use 'common' as *;
+@use 'modules' as *;
+@use 'header';
+@use 'footer';
+@use 'mixin' as *;
+
+
+// ヒーローエリア
+.hero{
+    width: 100%;
+    height: 100dvh;
+    background: url("../img/photo01.jpg") center center no-repeat;
+    background-size: cover;
+}
+
+// CONCEPT
+.concept{
+    background-color: $baseColor2;
+
+    .section-head{
+        margin-bottom: 216px;
+        @include mq(sp){
+            margin-bottom: 48px;
+        }
+    }
+    
+    &-first{
+        display: flex;
+        column-gap: 16px;
+        margin-bottom: 104px;
+        @include mq(sp){
+            display: block;
+            margin-bottom: 48px;
+        }
+
+
+        .column-left{
+            width: 50%;
+            @include mq(sp){
+                width: 100%;
+            }
+        }
+
+        .concept-content{
+            @include mq(sp){
+                margin-bottom: 24px;
+            }
+        }
+    
+        .column-right{
+            position: relative;
+            width: 50%;
+            height: 570px;
+            @include mq(sp){
+                width: 100%;
+                height: calc((100vw - 24px) + ((50vw - 4px) / 2));
+            }
+    
+            &__photo:nth-child(1){
+                position: absolute;
+                top: 0;
+                right: 0;
+                width: 441px;
+                aspect-ratio: 1/1;
+                object-fit: cover;
+                @include mq(sp){
+                    left: 0;
+                    width: calc(100vw - 24px);
+                }
+            }
+    
+            &__photo:nth-child(2){
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 258px;
+                aspect-ratio: 1/1;
+                object-fit: cover;
+                @include mq(sp){
+                    left: -24px;
+                    width: calc(50vw - 4px);
+                }
+            }
+        }
+    }
+
+    &-second{
+        display: flex;
+        align-items: center;
+        column-gap: 16px;
+        @include mq(sp){
+            flex-flow: column-reverse;
+        }
+
+        .column-left{
+            width: 50%;
+            @include mq(sp){
+                width: 100%;
+            }
+
+            &__photo{
+                width: 100%;
+            }
+        }
+
+        .column-right{
+            width: 50%;
+            padding-left: 91px;
+            @include mq(sp){
+                width: 100%;
+                padding: 0;
+            }
+        }
+
+        .concept-content{
+            @include mq(sp){
+                margin-bottom: 48px;
+            }
+        }
+    }
+
+    &-content{
+        &__head{
+            margin-bottom: 24px;
+            font-size: 24px;
+            font-weight: 600;
+            @include mq(sp){
+                margin-bottom: 16px;
+                font-size: 20px;
+            }
+        }
+
+        &__text{
+            line-height: 1.75;
+            @include mq(sp){
+                font-size: 14px;
+            }
+        }
+    }
+
+}
+
+// WORKS
+.works{
+    &.section{
+        padding-bottom: 0;
+        @include mq(sp){
+            padding-left: 0;
+            padding-right: 0;
+        }
+    }
+    .section-head{
+        text-align: center;
+    }
+
+    &-items{
+        display: flex;
+        @include mq(sp){
+            flex-wrap: wrap;
+        }
+    }
+
+    &-item{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        width: 25%;
+        aspect-ratio: 1/1;
+        object-fit: cover;
+        @include mq(sp){
+            width: 50%;
+        }
+
+        &:before{
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: $overlay1;
+            transition: background-color .5s linear;
+        }
+
+        &:hover:before{
+            background-color: initial;
+        }
+
+        &__title{
+            z-index: 0;
+            color: $textColor2;
+            font-size: 24px;
+            @include mq(sp){
+                font-size: 16px;
+            }
+        }
+    }
+
+    &-img1{
+        background: url("../img/photo05.jpg") center center no-repeat;
+        background-size: cover;
+    }
+
+    &-img2{
+        background: url("../img/photo07.jpg") center center no-repeat;
+        background-size: cover;
+    }
+
+    &-img3{
+        background: url("../img/photo06.jpg") center center no-repeat;
+        background-size: cover;
+    }
+
+    &-img4{
+        background: url("../img/photo08.jpg") center center no-repeat;
+        background-size: cover;
+    }
+}
+
+// NEWS
+.news{
+    &-items{
+        display: flex;
+        column-gap: 16px;
+        margin-bottom: 96px;
+        @include mq(sp){
+            column-gap: 8px;
+            width: calc(100% + 24px);
+            margin-bottom: 48px;
+            overflow-x: scroll;
+        }
+    }
+
+    &-article{
+        width: calc(100% / 3);
+        font-family: $sans;
+        @include mq(sp){
+            flex-shrink: 0;
+            width: 58vw;
+        }
+
+        .picture-frame{
+            width: 100%;
+            aspect-ratio: 4/3;
+            margin-bottom: 16px;
+            overflow: hidden;
+            @include mq(sp){
+                margin-bottom: 8px;
+            }
+        }
+
+        &__img{
+            width: 100%;
+            aspect-ratio: 4/3;
+            object-fit: cover;
+            transition: transform .5s linear;
+
+            &:hover{
+                transform: scale(1.1);
+            }
+        }
+
+        &__date{
+            margin-bottom: 16px;
+            font-size: 14px;
+            @include mq(sp){
+                margin-bottom: 8px;
+                font-size: 10px;
+            }
+        }
+
+        &__title{
+            margin-bottom: 8px;
+            font-size: 18px;
+            font-weight: 500;
+            @include mq(sp){
+                margin-bottom: 4px;
+                font-size: 14px;
+            }
+        }
+
+        &__excerpt{
+            font-size: 14px;
+            line-height: 1.5;
+            @include mq(sp){
+                font-size: 12px;
+            }
+        }
+    }
+
+    .btn{
+        margin: 0 auto;
+    }
+}
+
+// SHOW ROOM
+.show-room{
+    background-color: $mainColor1;
+
+    .section-head{
+        text-align: center;
+    }
+
+    .rooms{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        row-gap: 32px;
+
+        @include mq(sp){
+            row-gap: 24px;
+        }
+    }
+
+    .room{
+        position: relative;
+        width: 532px;
+        height: 668px;
+        padding: 24px 24px 32px;
+        border-radius: 4px;
+        background-color: $baseColor1;
+        font-family: $sans;
+        @include mq(sp){
+            width: 100%;
+            height: initial;
+            padding: 16px 16px 24px;
+            aspect-ratio: 3/4;
+            
+        }
+
+        &__img{
+            width: 100%;
+            margin-bottom: 24px;
+            aspect-ratio: 4/3;
+            object-fit: cover;
+            @include mq(sp){
+                margin-bottom: 16px;
+            }
+        }
+
+        &__place{
+            margin-bottom: 8px;
+            color: $mainColor1;
+            font-size: 24px;
+            font-weight: 600;
+            @include mq(sp){
+                margin-bottom: 16px;
+                font-size: 16px;
+            }
+        }
+
+        &__info{
+            font-size: 16px;
+            line-height: 1.5;
+            @include mq(sp){
+                font-size: 12px;
+            }
+        }
+    }
+
+    .social-icons{
+        position: absolute;
+        bottom: 32px;
+        left: 24px;
+    }
+
+}
+
+// CONTACT
+.contact{
+    position: relative;
+    z-index: -2;
+    width: 100%;
+    padding: 120px 0;
+    background: url("../img/photo010.jpg") center center no-repeat;
+    background-size: cover;
+
+    @include mq(sp){
+        padding: 64px 0;
+    }
+    
+    &:before{
+        content: '';
+        position: absolute;
+        z-index: -1;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: $overlay2;
+    }
+
+    &__message{
+        margin-bottom: 40px;
+        font-size: 20px;
+        font-weight: 600;
+        text-align: center;
+        @include mq(sp){
+            margin-bottom: 32px;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+    }
+
+    .btn{
+        margin: 0 auto;
+    }
+
+}
